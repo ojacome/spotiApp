@@ -16,7 +16,7 @@ export class HomeComponent {
     this.loading = true;
     this.spotifySvc.getNewReleases()
     .subscribe( (res: any) => {
-      console.log(res);
+      
       this.loading = false;
       this.nuevasCanciones = res;
     })

@@ -23,7 +23,7 @@ export class SearchComponent {
     this.loading = true;
     this.spotifySvc.searchArtist(termino)
     .subscribe( (res: any) => {
-      console.log(res);
+      
       this.loading = false;
       this.artistas = res;
     })

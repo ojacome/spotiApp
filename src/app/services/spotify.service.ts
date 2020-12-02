@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 })
 export class SpotifyService {
 
-  token = 'Bearer BQCop-hajd2GFS0fUnLXZnUTTwUFVmSJH8IctLT8YvgKS02sA1VViFieBX9sJKmzTGesL87Bn2O6Iwm3wxA';
+  token = 'Bearer BQBTUP30TL8HfDTBpkjKUtryXgIz53pmk9b177jw5JdEhLB4Dg2HrXS_a0hRfnSVZtADO3qQO7Dve4irq5Q';
   constructor( private http: HttpClient) { }
 
 
@@ -32,5 +32,9 @@ export class SpotifyService {
   searchArtist( termino: string ){
     return this.getQuery(`/search?q=${ termino }&type=artist&limit=15`)
     .pipe( map( data => data['artists'].items ))
+  }
+
+  getArtist( id: string){
+    return this.getQuery(`/artists/${ id }`)
   }
 }
