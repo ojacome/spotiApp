@@ -1,7 +1,7 @@
 
 <app-loading *ngIf="loading"></app-loading>
 
-<div class="row" *ngIf="!loading">
+<div class="row m-md-5 animated fadeIn fast" *ngIf="!loading">
 
     <div class="col-2">
         <img [src]="artista.images | noimage" [alt]="artista.name" class="img-circle img-thumbnail">
@@ -15,8 +15,45 @@
         </p>
     </div>
     <div class="col-4 text-right">
-        <button class="btn btn-outline-danger">
+        <button class="btn btn-outline-danger" (click)="regresar()">
             Regresar
         </button>
+    </div>
+</div>
+
+<div class="row m-sm-1 m-md-5 animated fadeIn fast" *ngIf="topTracks">
+    <div class="col">
+        <div class="table-responsive">
+            <table class="table" style="color: whitesmoke !important;">
+                <thead>
+                    <tr>
+                        <th>Foto</th>
+                        <th>Album</th>
+                        <th>Canción</th>
+                        <th>Vista Previa</th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                    <tr *ngFor="let track of topTracks">
+                        <td>
+                            <img [src]="track.album.images |  noimage" [alt]="track.name" class="img-thumb">
+                        </td>
+                        <td>{{track.album.name}}</td>
+                        <td>{{track.name}}</td>
+                        <td>
+                            <!-- <audio [src]="track.preview_url" controls></audio> -->
+                            <iframe 
+                            [src]="track.uri | domseguro" 
+                            width="300" 
+                            height="80" 
+                            frameborder="0" 
+                            allowtransparency="true" 
+                            allow="encrypted-media"></iframe>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

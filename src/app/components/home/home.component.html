@@ -1,8 +1,18 @@
+
+
+
 <div class="row justify-content-center">
     <div class="col-md-9">
 
         <h3>Últimos lanzamientos.</h3>
+
+        <div *ngIf="error" class="my-5 alert alert-danger animated fadeIn fast">
+            <h3>Error</h3>
+            <p>{{msgError}}</p>
+        </div>
+        
         <app-loading *ngIf="loading"></app-loading>
+
         <app-tarjetas [items]="nuevasCanciones"></app-tarjetas>
     </div>
 </div>

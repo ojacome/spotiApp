@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -10,7 +11,7 @@ import { map } from 'rxjs/operators';
 })
 export class SpotifyService {
 
-  token = 'Bearer BQBTUP30TL8HfDTBpkjKUtryXgIz53pmk9b177jw5JdEhLB4Dg2HrXS_a0hRfnSVZtADO3qQO7Dve4irq5Q';
+  token = `Bearer ${environment.token_spotify}`;
   constructor( private http: HttpClient) { }
 
 
@@ -36,5 +37,10 @@ export class SpotifyService {
 
   getArtist( id: string){
     return this.getQuery(`/artists/${ id }`)
+  }
+  
+  getTopTracks( id: string){
+    return this.getQuery(`/artists/${ id }/top-tracks?country=us`)
+    .pipe( map( data => data["tracks"]))
   }
 }
