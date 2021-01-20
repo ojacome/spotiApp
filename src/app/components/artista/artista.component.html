@@ -3,7 +3,7 @@
 
 <div class="row m-md-5 animated fadeIn fast" *ngIf="!loading">
 
-    <div class="col-2">
+    <div class="col-md-2">
         <img [src]="artista.images | noimage" [alt]="artista.name" class="img-circle img-thumbnail">
     </div>
     <div class="col">
@@ -14,7 +14,7 @@
             </a>
         </p>
     </div>
-    <div class="col-4 text-right">
+    <div class="col-md-4 mb-sm-3 text-md-right">
         <button class="btn btn-outline-danger" (click)="regresar()">
             Regresar
         </button>
